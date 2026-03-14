@@ -1,0 +1,240 @@
+---
+import Logo from "./Logo.astro";
+
+const menuItems = [
+  { name: "Inicio", path: "/" },
+  { name: "Artículos", path: "/articles" },
+  { name: "Sobre Mí", path: "/about" },
+  { name: "Contacto", path: "/contact" },
+];
+
+const { pathname } = Astro.url;
+---
+
+<header>
+  <div class="container nav-wrapper">
+    <a href="/" class="logo-link">
+      <div class="logo-icon-wrapper">
+        <Logo className="logo-svg" />
+      </div>
+      <div class="logo-text">
+        Sistema <span>Autónomo</span>
+      </div>
+    </a>
+    <nav>
+      <button class="hamburguer">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="currentcolor"
+          stroke="currentcolor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="icon icon-tabler icons-tabler-outline icon-tabler-menu-2"
+          ><path stroke="none" d="M0 0h24v24H0z" fill="none"></path><path
+            d="M4 6l16 0"></path><path d="M4 12l16 0"></path><path
+            d="M4 18l16 0"></path>
+        </svg>
+      </button>
+      <div class="menu-elements">
+        {
+          menuItems.map(({ name, path }) => (
+            <a href={path} class:list={[{ active: path === pathname }]}>
+              {name}
+            </a>
+          ))
+        }
+      </div>
+    </nav>
+  </div>
+</header>
+
+<style>
+  header {
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .nav-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 4.5rem;
+  }
+
+  .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+  }
+
+  .logo-icon-wrapper {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-primary);
+  }
+
+  .logo-svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .logo-text {
+    display: flex;
+    flex-direction: column;
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: var(--color-text);
+    margin: 0;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+
+  .logo-text span {
+    color: var(--color-primary);
+  }
+
+  .hamburguer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    color: var(--color-text);
+    cursor: pointer;
+    padding: 0.5rem;
+    transition: color 0.2s ease;
+  }
+
+  .hamburguer:hover,
+  .hamburguer[aria-expanded="true"] {
+    color: var(--color-primary);
+  }
+
+  .hamburguer svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .menu-elements {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--color-surface);
+    border-bottom: 1px solid var(--color-border);
+    display: flex;
+    flex-direction: column;
+    padding: 1rem 0;
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition:
+      transform 0.3s ease,
+      opacity 0.3s ease,
+      visibility 0.3s;
+    z-index: -1;
+  }
+
+  .menu-elements.is-open {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .menu-elements a {
+    padding: 0.75rem 1.5rem;
+    color: var(--color-text);
+    font-weight: 500;
+    border-left: 3px solid transparent;
+  }
+
+  .menu-elements a:hover,
+  .menu-elements a.active {
+    color: var(--color-primary);
+    background-color: var(--color-bg);
+    border-left-color: var(--color-accent);
+    text-decoration: none;
+  }
+
+  @media (min-width: 768px) {
+    .nav-wrapper {
+      height: 5.5rem;
+    }
+
+    .logo-icon-wrapper {
+      width: 64px;
+      height: 64px;
+    }
+
+    .logo-text {
+      font-size: 1.6rem;
+    }
+
+    .hamburguer {
+      display: none;
+    }
+
+    .menu-elements {
+      position: static;
+      transform: none;
+      opacity: 1;
+      visibility: visible;
+      flex-direction: row;
+      width: auto;
+      border: none;
+      padding: 0;
+      background-color: transparent;
+      gap: 2rem;
+      z-index: auto;
+    }
+
+    .menu-elements a {
+      padding: 0.5rem 0;
+      border-left: none;
+      position: relative;
+    }
+
+    .menu-elements a:hover,
+    .menu-elements a.active {
+      background-color: transparent;
+      color: var(--color-primary);
+    }
+
+    .menu-elements a::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: var(--color-accent);
+      transform: scaleX(0);
+      transform-origin: right;
+      transition: transform 0.3s ease;
+    }
+
+    .menu-elements a:hover::after,
+    .menu-elements a.active::after {
+      transform: scaleX(1);
+      transform-origin: left;
+    }
+  }
+</style>
+
+<script>
+  const hamburguer = document.querySelector(".hamburguer");
+  const menuElems = document.querySelector(".menu-elements");
+
+  hamburguer?.addEventListener("click", () => {
+    menuElems?.classList.toggle("is-open");
+  });
+</script>

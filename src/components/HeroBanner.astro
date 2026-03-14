@@ -1,0 +1,128 @@
+---
+import { Image } from "astro:assets";
+import hero from "@/assets/hero.png";
+---
+
+<section>
+  <div class="banner-content">
+    <h1>Automatiza. Descansa. Repite</h1>
+    <h2>Sistema Autónomo</h2>
+    <p>Si una tarea puede hacerse dos veces, puede automatizarse.</p>
+    <p>
+      Este blog explora cómo construir sistemas que trabajan solos: scraping,
+      automatización y datos con Python.
+    </p>
+    <a class="cta" href="/articles">Explorar Artículos</a>
+  </div>
+  <div class="hero-image">
+    <Image src={hero} alt="Perezoso durmiendo sobre un portátil" />
+  </div>
+</section>
+
+<style>
+  section {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 1.5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+
+  .banner-content {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  h1 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    font-weight: 500;
+    margin-top: 0;
+    margin-bottom: 1rem;
+  }
+
+  p {
+    font-size: 1.05rem;
+    margin-bottom: 0.5rem;
+    max-width: 600px;
+  }
+
+  .cta {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-surface) !important;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    transition:
+      opacity 0.2s ease,
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .cta:hover {
+    opacity: 0.85;
+    text-decoration: none !important;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .hero-image {
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .hero-image :global(img) {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  @media (min-width: 768px) {
+    section {
+      flex-direction: row;
+      padding: 4rem;
+      gap: 4rem;
+      margin: 4rem 0;
+    }
+
+    .banner-content {
+      text-align: left;
+      align-items: flex-start;
+      flex: 1;
+    }
+
+    h2 {
+      margin-bottom: 1.5rem;
+    }
+
+    p {
+      max-width: none;
+      margin-bottom: 0.75rem;
+    }
+
+    .cta {
+      margin-top: 1.5rem;
+    }
+
+    .hero-image {
+      flex: 1;
+      max-width: 500px;
+    }
+  }
+</style>
