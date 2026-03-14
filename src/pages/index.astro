@@ -1,8 +1,20 @@
 ---
+import ArticleCard from "@/components/ArticleCard.astro";
+import ArticleCarousel from "@/components/ArticleCarousel.astro";
 import HeroBanner from "@/components/HeroBanner.astro";
 import MainLayout from "@/layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Home">
   <HeroBanner />
+  <ArticleCarousel carouselTitle="Últimos Artículos">
+    <ArticleCard horizontal position="right" />
+    <ArticleCard />
+  </ArticleCarousel>
+  <ArticleCarousel carouselTitle="Otros Artículos">
+    <ArticleCard />
+    <ArticleCard />
+    <ArticleCard />
+    <ArticleCard />
+  </ArticleCarousel>
 </MainLayout>

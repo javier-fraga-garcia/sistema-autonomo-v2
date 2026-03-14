@@ -1,0 +1,67 @@
+---
+interface Props {
+  carouselTitle?: string;
+}
+
+const { carouselTitle } = Astro.props;
+---
+
+<section>
+  {carouselTitle && (<h3>{carouselTitle}</h3> <hr />)}
+  
+  <div class="cards-carousel">
+    <slot />
+  </div>
+</section>
+
+<style>
+  section {
+    margin: 3rem 0;
+  }
+
+  h3 {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 0.5rem;
+  }
+
+  hr {
+    border: none;
+    height: 2px;
+    background-color: var(--color-border);
+    margin-bottom: 2rem;
+    width: 100%;
+    position: relative;
+  }
+
+  hr::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 60px;
+    background-color: var(--color-primary);
+  }
+
+  .cards-carousel {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  @media (min-width: 768px) {
+    section {
+      margin: 4rem 0;
+    }
+
+    h3 {
+      font-size: 1.75rem;
+    }
+
+    .cards-carousel {
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 2rem;
+    }
+  }
+</style>
