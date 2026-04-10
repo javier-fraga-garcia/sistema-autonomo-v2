@@ -1,0 +1,23 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import MainLayout from "@/layouts/MainLayout.astro";
+import ArticleCarousel from "@/components/ArticleCarousel.astro";
+import ArticleCard from "@/components/ArticleCard.astro";
+
+const articles: CollectionEntry<"articles">[] = await getCollection("articles");
+const pubArticles = articles
+  .filter((art) => !art.data.draft)
+  .sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
+---
+
+<MainLayout title="Artículos">
+  <main class="container">
+    <ArticleCarousel>
+      {
+        pubArticles.map((article) => (
+          <ArticleCard id={article.id} article={article.data} />
+        ))
+      }
+    </ArticleCarousel>
+  </main>
+</MainLayout>
