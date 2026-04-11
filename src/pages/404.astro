@@ -1,0 +1,90 @@
+---
+import notFound from "@/assets/404.png";
+import MainLayout from "@/layouts/MainLayout.astro";
+---
+
+<MainLayout title="404 No encontrado">
+  <main>
+    <h1>404</h1>
+    <h2>No encontramos lo que estabas buscando</h2>
+    <p>Lee alguno de nuestros otros artículos</p>
+    <a class="cta" href="/articles">Explorar Artículos</a>
+  </main>
+</MainLayout>
+
+<style>
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    padding: 2rem;
+    text-align: center;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+  }
+
+  h1 {
+    font-size: 6rem;
+    font-weight: 800;
+    margin: 0;
+    line-height: 1;
+    color: var(--color-primary);
+    letter-spacing: -0.05em;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 1rem 0 0.5rem 0;
+    line-height: 1.2;
+  }
+
+  p {
+    font-size: 1.1rem;
+    color: var(--color-text-muted);
+    margin-bottom: 2.5rem;
+  }
+
+  .cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-primary);
+    color: var(--color-surface) !important;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 300px;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      opacity 0.2s ease;
+  }
+
+  .cta:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    text-decoration: none !important;
+  }
+
+  @media (min-width: 768px) {
+    h1 {
+      font-size: 10rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .cta {
+      width: auto;
+      min-width: 220px;
+    }
+  }
+</style>

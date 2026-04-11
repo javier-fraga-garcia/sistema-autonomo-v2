@@ -12,7 +12,7 @@ const pubArticles = articles
 
 <MainLayout title="Artículos">
   <main class="container">
-    <ArticleCarousel>
+    <ArticleCarousel carouselTitle="Todos los artículos">
       {
         pubArticles.map((article) => (
           <ArticleCard id={article.id} article={article.data} />

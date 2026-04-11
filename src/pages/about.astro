@@ -3,5 +3,212 @@ import MainLayout from "@/layouts/MainLayout.astro";
 ---
 
 <MainLayout title="Sobre Mí">
-  <h1>Sobre Mí</h1>
+  <main>
+    <div class="hero">
+      <h1>Diseñar sistemas para no repetir trabajo</h1>
+      <p>
+        Automatización, scraping e IA aplicados a problemas reales, sin ruido
+        innecesario.
+      </p>
+    </div>
+    <div class="about">
+      <h2>Sobre Sistema <span>Autónomo</span></h2>
+      <p>
+        Sistema Autónomo es un blog sobre automatización, scraping y tecnología
+        aplicada sin exceso de ruido.
+      </p>
+
+      <p>
+        Aquí encontrarás formas de construir sistemas que trabajan por ti:
+        pipelines de datos, scrapers e integraciones con IA enfocadas a resolver
+        problemas reales.
+      </p>
+
+      <p>
+        No es un espacio para seguir tendencias, sino para analizarlas,
+        probarlas y entender si realmente aportan valor.
+      </p>
+      <p>
+        El contenido nace de experiencia real desarrollando automatizaciones en
+        producción, con una premisa clara: eliminar trabajo innecesario mediante
+        diseño.
+      </p>
+      <p>
+        Automatizar no es hacer más. Es dejar de hacer lo que nunca debería
+        haber sido manual.
+      </p>
+    </div>
+    <div class="contents">
+      <h2>¿Qué encontrarás aquí?</h2>
+      <ul>
+        <li>Automatización de procesos y workflows reales</li>
+        <li>Web scraping aplicado a casos concretos</li>
+        <li>Integraciones prácticas con IA</li>
+        <li>Diseño y construcción de pipelines de datos</li>
+        <li>Análisis de herramientas y enfoques sin hype innecesario</li>
+      </ul>
+    </div>
+    <div class="principles">
+      <h2>Principios</h2>
+      <ul>
+        <li>Si se repite, se automatiza</li>
+        <li>
+          Todo lo que se publica aquí ha sido construido y probado, no es teoría
+        </li>
+        <li>La tecnología es un medio, no un fin</li>
+        <li>Cuestionar el hype antes de adoptarlo</li>
+      </ul>
+    </div>
+    <div class="about-me">
+      <h2>Sobre mí</h2>
+      <p>
+        Detrás de Sistema Autónomo hay experiencia en analítica digital y
+        desarrollo de pipelines de datos en entornos reales.
+      </p>
+
+      <p>
+        El enfoque del blog surge de trabajar con procesos que necesitan ser
+        fiables, escalables y automatizados, donde los errores manuales no son
+        una opción.
+      </p>
+
+      <p>
+        Este espacio es una extensión de esa forma de trabajar: construir
+        soluciones que funcionen y se mantengan en el tiempo.
+      </p>
+    </div>
+
+    <a class="cta" href="/articles">Explorar Artículos</a>
+  </main>
 </MainLayout>
+
+<style>
+  main {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 3rem 1.25rem;
+    font-family: var(--font-sans);
+    color: var(--color-text);
+  }
+
+  .hero {
+    margin-bottom: 4rem;
+  }
+
+  h1 {
+    font-size: 2.5rem;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.02em;
+    color: var(--color-text);
+  }
+
+  .hero p {
+    font-size: 1.25rem;
+    color: var(--color-text-muted);
+    line-height: 1.4;
+  }
+
+  h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+    font-weight: 700;
+  }
+
+  h2 span {
+    color: var(--color-primary);
+  }
+
+  p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+    color: var(--color-text);
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 2rem;
+  }
+
+  li {
+    margin-bottom: 1rem;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 1.1rem;
+  }
+
+  li::before {
+    content: "→";
+    position: absolute;
+    left: 0;
+    color: var(--color-primary);
+  }
+
+  .principles {
+    background-color: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2rem;
+    margin: 3rem 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+  }
+
+  .principles li {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+  }
+
+  .cta {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-primary);
+    color: var(--color-surface) !important;
+    text-decoration: none;
+    font-size: 1.1rem;
+    font-weight: 600;
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    margin-top: 2rem;
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      opacity 0.2s ease;
+    text-align: center;
+  }
+
+  .cta:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (min-width: 768px) {
+    main {
+      padding: 5rem 2rem;
+    }
+
+    h1 {
+      font-size: 3.75rem;
+      max-width: 90%;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      max-width: 700px;
+    }
+
+    .cta {
+      display: inline-flex;
+      width: auto;
+      min-width: 200px;
+    }
+
+    .principles {
+      padding: 3rem;
+    }
+  }
+</style>
