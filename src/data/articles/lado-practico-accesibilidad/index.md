@@ -1,8 +1,8 @@
 ---
 title: "El lado práctico de la accesibilidad: generar texto alternativo con IA"
-pubDate: 2024-06-01
-author: "Perezoso Sr."
-description: "This is a sample article for demonstration purposes."
+pubDate: 2025-07-29
+author: "Editor"
+description: "Describir imágenes sin escribir descripciones: accesibilidad a escala con IA."
 cover: "./cover.png"
 coverAlt: "Cover Image for Article 1"
 draft: false
